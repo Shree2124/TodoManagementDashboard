@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTask, markTaskCompleted } from "../redux/taskSlice";
 import { Info as InfoIcon, Check as CheckIcon, Delete as DeleteIcon } from '@mui/icons-material';

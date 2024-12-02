@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TaskItem from "./TaskItem";
 import { setFilter } from "../redux/taskSlice";
