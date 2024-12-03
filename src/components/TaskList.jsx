@@ -10,6 +10,8 @@ const TaskList = () => {
   const filter = useSelector((state) => state.tasks.filter) || "all";
   const dispatch = useDispatch();
 
+  const currentDate = new Date();
+
   const filteredTasks = tasks?.filter((task) => {
     const matchesSearchTerm =
       task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -18,7 +20,10 @@ const TaskList = () => {
     const matchesFilter =
       filter === "all" ||
       (filter === "completed" && task.completed) ||
-      (filter === "pending" && !task.completed);
+      (filter === "pending" && !task.completed) ||
+      (filter === "overdue" &&
+        task.dueDate &&
+        new Date(task.dueDate) < currentDate);
 
     return matchesSearchTerm && matchesFilter;
   });
@@ -50,6 +55,7 @@ const TaskList = () => {
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="pending">Pending</option>
+            <option value="overdue">Overdue</option>
           </select>
         </div>
       </div>
